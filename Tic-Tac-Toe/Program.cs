@@ -11,8 +11,31 @@ string[] board = {  "\n\n   a     b     c  ",
                     "3  -  |  -  |  -  ",
                     "      |     |     "};
 
+void BoardReset(int pos1, int pos2)
+    {
+        string mid = board[pos1];
+
+        mid = mid.Remove(pos2,1).Insert(pos2, "-");
+
+        board[pos1] = mid;
+    }
+
+void FullBoardReset()
+    {
+        BoardReset(2, 3);
+        BoardReset(2, 9);
+        BoardReset(2, 15);
+        BoardReset(5, 3);
+        BoardReset(5, 9);
+        BoardReset(5, 15);
+        BoardReset(8, 3);
+        BoardReset(8, 9);
+        BoardReset(8, 15);
+    }
+
 void Main()
     {
+        FullBoardReset();
         PrintBoard();
         Choice();
     }
