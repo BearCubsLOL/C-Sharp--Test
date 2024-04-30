@@ -1,4 +1,6 @@
-﻿string[] board = {  "\n\n   a     b     c  ",
+﻿using System.ComponentModel.Design;
+
+string[] board = {  "\n\n   a     b     c  ",
                     "      |     |     ",
                     "1  -  |  -  |  -  ",
                     " _____|_____|_____",
@@ -48,14 +50,14 @@ void CheckWin(int pos1, int pos11, int pos2, int pos22, int pos3, int pos33)
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("You Win!!!");
                 Console.ResetColor();
-                Environment.Exit(1);
+                MainMenu();
             }
         else if (one[pos11].ToString() == "o" && two[pos22].ToString() == "o" && three[pos33].ToString() == "o")
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You Lose!!!");
                 Console.ResetColor();
-                Environment.Exit(1);
+                MainMenu();
             }
     }
 
@@ -77,7 +79,7 @@ void CheckAll()
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("It's a tie, UwU");
                 Console.ResetColor();
-                Environment.Exit(1);
+                MainMenu();
             }
     }
 
@@ -217,4 +219,28 @@ void Ai()
         Choice();
             }
 
-Main();
+void MainMenu()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n\nMenu:\n");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Start");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Quit\n");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        string menu = Console.ReadLine();
+        Console.ResetColor();
+        if (menu.ToLower() == "start")
+            {
+                Main();
+            }
+        else if (menu.ToLower() == "quit")
+            {
+                Environment.Exit(1);
+            }
+    }
+
+MainMenu();
